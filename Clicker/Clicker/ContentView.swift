@@ -9,11 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     @State var score = 0
+    @State var bestScore = 0
     @State var gameIsInProgress = false
     var body: some View {
         VStack {
-            Text("Score : \(score)")
-                .padding()
+            HStack{
+                if score >= bestScore && score != 0{
+                    Image(systemName: "flame")}
+                Text("Score : \(score)")
+                    .padding()
+            }.font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
             if gameIsInProgress == true {
                 Image(systemName: "plus.square")
                     .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
@@ -28,6 +33,9 @@ struct ContentView: View {
                     gameIsInProgress = true
                     Timer.scheduledTimer(withTimeInterval: 10.0, repeats: false) { (_) in
                         gameIsInProgress = false
+                        if score > bestScore {
+                            bestScore = score
+                        }
                     }
                 }.padding()
             }
