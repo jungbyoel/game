@@ -31,7 +31,7 @@ struct ContentView: View {
                 Button("Nouvelle partie") {
                     score = 0
                     gameIsInProgress = true
-                    Timer.scheduledTimer(withTimeInterval: 10.0, repeats: false) { (_) in
+                    Timer.scheduledTimer(withTimeInterval: 15.0, repeats: false) { (_) in
                         gameIsInProgress = false
                         if score > bestScore {
                             bestScore = score
